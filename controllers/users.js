@@ -3,9 +3,10 @@ const NotFound = require('../errors/errors');
 const STATUS_CODE = require('../errors/errorCodes');
 
 const createUser = (req, res) => {
-  User.create(req.body)
+  const { name, about, avatar } = req.body;
+  User.create({ name, about, avatar })
     .then((user) => {
-      res.status(STATUS_CODE.successCreate).send(user);
+      res.status(STATUS_CODE.successCreate).send({ user });
     })
     .catch((e) => {
       if (e.name === 'ValidationError') {
@@ -26,7 +27,7 @@ const getUser = (req, res) => {
       throw new NotFound();
     })
     .then((user) => {
-      res.status(STATUS_CODE.success).send(user);
+      res.status(STATUS_CODE.success).send({ user });
     })
     .catch((e) => {
       if (e.name === 'NotFound') {
@@ -48,7 +49,7 @@ const getUser = (req, res) => {
 const getUsers = (req, res) => {
   User.find({})
     .then((users) => {
-      res.status(STATUS_CODE.success).send(users);
+      res.send({ users });
     })
     .catch(() => {
       res.status(STATUS_CODE.serverError).send({
@@ -72,7 +73,7 @@ const updateUser = (req, res) => {
       throw new NotFound();
     })
     .then((user) => {
-      res.status(STATUS_CODE.success).send(user);
+      res.send({ user });
     })
     .catch((e) => {
       if (e.name === 'NotFound') {
@@ -106,7 +107,7 @@ const updateAvatar = (req, res) => {
       throw new NotFound();
     })
     .then((user) => {
-      res.status(STATUS_CODE.success).send(user);
+      res.send({ user });
     })
     .catch((e) => {
       if (e.name === 'NotFound') {

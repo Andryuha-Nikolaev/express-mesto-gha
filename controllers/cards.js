@@ -24,7 +24,7 @@ const createCard = (req, res) => {
 const getCards = (req, res) => {
   Card.find({})
     .then((cards) => {
-      res.status(STATUS_CODE.success).send(cards);
+      res.send({ cards });
     })
     .catch(() => {
       res.status(STATUS_CODE.serverError).send({
@@ -39,7 +39,7 @@ const deleteCard = (req, res) => {
       throw new NotFound();
     })
     .then((card) => {
-      res.status(STATUS_CODE.success).send(card);
+      res.send({ card });
     })
     .catch((e) => {
       if (e.name === 'NotFound') {
@@ -68,7 +68,7 @@ const likeCard = (req, res) => {
       throw new NotFound();
     })
     .then((card) => {
-      res.status(STATUS_CODE.success).send(card);
+      res.send({ card });
     })
     .catch((e) => {
       if (e.name === 'NotFound') {
@@ -97,7 +97,7 @@ const dislikeCard = (req, res) => {
       throw new NotFound();
     })
     .then((card) => {
-      res.status(STATUS_CODE.success).send(card);
+      res.send({ card });
     })
     .catch((e) => {
       if (e.name === 'NotFound') {
