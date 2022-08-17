@@ -27,7 +27,7 @@ const getUser = (req, res) => {
       throw new NotFound();
     })
     .then((user) => {
-      res.status(STATUS_CODE.success).send({ user });
+      res.send({ user });
     })
     .catch((e) => {
       if (e.name === 'NotFound') {
