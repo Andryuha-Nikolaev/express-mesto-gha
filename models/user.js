@@ -17,7 +17,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     select: false,
-    minlength: 8,
   },
   name: { // у пользователя есть имя — опишем требования к имени в схеме:
     type: String, // имя — это строка
