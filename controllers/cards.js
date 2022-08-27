@@ -41,7 +41,8 @@ const deleteCard = (req, res, next) => {
         Card.deleteOne(card)
           .then(() => {
             res.send({ card });
-          });
+          })
+          .catch(next);
       } else {
         throw new Forbidden('Невозможно удалить карточку');
       }
