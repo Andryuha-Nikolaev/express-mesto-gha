@@ -47,13 +47,14 @@ const deleteCard = (req, res, next) => {
         throw new Forbidden('Невозможно удалить карточку');
       }
     })
-    .catch((e) => {
-      if (e.name === 'CastError') {
-        next(new BadRequest('Переданы некорректные данные удаления'));
-      } else {
-        next(e);
-      }
-    });
+    .catch(next);
+  // .catch((e) => {
+  //   if (e.name === 'CastError') {
+  //     next(new BadRequest('Переданы некорректные данные удаления'));
+  //   } else {
+  //     next(e);
+  //   }
+  // });
 };
 
 const likeCard = (req, res, next) => {
