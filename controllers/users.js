@@ -133,9 +133,7 @@ const updateAvatar = (req, res, next) => {
     .orFail(() => {
       throw new NotFound('Пользователь с указанным _id не найден');
     })
-    .then((user) => {
-      res.send({ user });
-    })
+    .then((user) => res.status(200).send({ user }))
     .catch((e) => {
       if (e.name === 'ValidationError') {
         next(new BadRequest('Переданы некорректные данные при обновлении аватара'));
