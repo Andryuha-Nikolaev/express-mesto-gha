@@ -1,18 +1,12 @@
 const Card = require('../models/card');
-const NotFound = require('../errors/badRequest');
+const NotFound = require('../errors/notFound');
 const BadRequest = require('../errors/badRequest');
 const Forbidden = require('../errors/forbidden');
-// const {
-//   CREATED_CODE,
-// } = require('../errors/statusCode');
 
 const createCard = (req, res, next) => {
   const { name, link } = req.body;
   Card.create({ name, link, owner: req.user._id })
     .then((card) => res.send({ card }))
-    // {
-    //   res.status(CREATED_CODE).send(card);
-    // })
     .catch((e) => {
       if (e.name === 'ValidationError') {
         next(new BadRequest('Переданы некорректные данные при создании карточки'));
@@ -47,14 +41,13 @@ const deleteCard = (req, res, next) => {
         throw new Forbidden('Невозможно удалить карточку');
       }
     })
-    .catch(next);
-  // .catch((e) => {
-  //   if (e.name === 'CastError') {
-  //     next(new BadRequest('Переданы некорректные данные удаления'));
-  //   } else {
-  //     next(e);
-  //   }
-  // });
+    .catch((e) => {
+      if (e.name === 'CastError') {
+        next(new BadRequest('Переданы некорректные данные удаления'));
+      } else {
+        next(e);
+      }
+    });
 };
 
 const likeCard = (req, res, next) => {
