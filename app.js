@@ -3,6 +3,7 @@ const express = require('express');
 const { errors, Joi, celebrate } = require('celebrate');
 const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
+const cors = require('./middlewares/cors');
 const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
 const INTERNAL_SERVER_ERROR = require('./errors/statusCode');
@@ -15,6 +16,8 @@ const { PORT = 3000 } = process.env;
 mongoose.connect('mongodb://localhost:27017/mestodb');
 
 app.use(express.json());
+
+app.use(cors);
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
