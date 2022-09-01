@@ -34,7 +34,7 @@ const deleteCard = (req, res, next) => {
       if (req.user._id === owner) {
         Card.deleteOne(card)
           .then(() => {
-            res.send({ card });
+            res.send(card);
           })
           .catch(next);
       } else {
@@ -48,7 +48,7 @@ const deleteCard = (req, res, next) => {
         next(e);
       }
     });
-};
+};//
 
 const likeCard = (req, res, next) => {
   Card.findByIdAndUpdate(
@@ -60,7 +60,7 @@ const likeCard = (req, res, next) => {
       throw new NotFound('Передан несуществующий _id карточки');
     })
     .then((card) => {
-      res.send({ card });
+      res.send(card);
     })
     .catch((e) => {
       if (e.name === 'CastError') {
@@ -69,7 +69,7 @@ const likeCard = (req, res, next) => {
         next(e);
       }
     });
-};
+};//
 
 const dislikeCard = (req, res, next) => {
   Card.findByIdAndUpdate(
@@ -81,7 +81,7 @@ const dislikeCard = (req, res, next) => {
       throw new NotFound('Передан несуществующий _id карточки');
     })
     .then((card) => {
-      res.send({ card });
+      res.send(card);
     })
     .catch((e) => {
       if (e.name === 'CastError') {
@@ -90,7 +90,7 @@ const dislikeCard = (req, res, next) => {
         next(e);
       }
     });
-};
+};//
 
 module.exports = {
   createCard, getCards, deleteCard, likeCard, dislikeCard,
