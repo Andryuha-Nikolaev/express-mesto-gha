@@ -1,9 +1,11 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 const express = require('express');
 const { errors, Joi, celebrate } = require('celebrate');
 const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const cors = require('./middlewares/cors');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
 const INTERNAL_SERVER_ERROR = require('./errors/statusCode');
@@ -18,6 +20,8 @@ mongoose.connect('mongodb://localhost:27017/mestodb');
 app.use(express.json());
 
 app.use(cors);
+
+app.use(requestLogger);
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
@@ -43,6 +47,8 @@ app.use('/', cardRouter);
 app.use('*', (req, res, next) => {
   next(new NotFound('Страница не найдена'));
 });
+
+app.use(errorLogger);
 
 app.use(errors());
 
