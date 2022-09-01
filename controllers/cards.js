@@ -6,7 +6,7 @@ const Forbidden = require('../errors/forbidden');
 const createCard = (req, res, next) => {
   const { name, link } = req.body;
   Card.create({ name, link, owner: req.user._id })
-    .then((card) => res.send({ card }))
+    .then((card) => res.send(card))
     .catch((e) => {
       if (e.name === 'ValidationError') {
         next(new BadRequest('Переданы некорректные данные при создании карточки'));
@@ -14,7 +14,7 @@ const createCard = (req, res, next) => {
         next(e);
       }
     });
-};
+};//
 
 const getCards = (req, res, next) => {
   Card.find({})
