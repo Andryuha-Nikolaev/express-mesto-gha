@@ -58,7 +58,7 @@ const getUser = (req, res, next) => {
       throw new NotFound('Пользователь по указанному _id не найден');
     })
     .then((user) => {
-      res.send({ user });
+      res.send(user);
     })
     .catch((e) => {
       if (e.name === 'CastError') {
@@ -67,15 +67,15 @@ const getUser = (req, res, next) => {
         next(e);
       }
     });
-};
+};//
 
 const getUsers = (req, res, next) => {
   User.find({})
     .then((users) => {
-      res.send({ users });
+      res.send(users);
     })
     .catch(next);
-};
+};//
 
 const getCurrentUser = (req, res, next) => {
   const userId = req.user._id;
@@ -84,7 +84,7 @@ const getCurrentUser = (req, res, next) => {
       throw new NotFound('Пользователь по указанному _id не найден');
     })
     .then((user) => {
-      res.send({ user });
+      res.send(user);
     })
     .catch((e) => {
       if (e.name === 'CastError') {
@@ -93,7 +93,7 @@ const getCurrentUser = (req, res, next) => {
         next(e);
       }
     });
-};
+};//
 
 const updateUser = (req, res, next) => {
   const { name, about } = req.body;
@@ -109,7 +109,7 @@ const updateUser = (req, res, next) => {
       throw new NotFound('Пользователь с указанным _id не найден');
     })
     .then((user) => {
-      res.send({ user });
+      res.send(user);
     })
     .catch((e) => {
       if (e.name === 'ValidationError') {
@@ -118,7 +118,7 @@ const updateUser = (req, res, next) => {
         next(e);
       }
     });
-};
+};//
 
 const updateAvatar = (req, res, next) => {
   const { avatar } = req.body;
@@ -133,7 +133,7 @@ const updateAvatar = (req, res, next) => {
     .orFail(() => {
       throw new NotFound('Пользователь с указанным _id не найден');
     })
-    .then((user) => res.status(200).send({ user }))
+    .then((user) => res.status(200).send(user))
     .catch((e) => {
       if (e.name === 'ValidationError') {
         next(new BadRequest('Переданы некорректные данные при обновлении аватара'));
@@ -141,7 +141,7 @@ const updateAvatar = (req, res, next) => {
         next(e);
       }
     });
-};
+};//
 
 module.exports = {
   createUser, getUser, getUsers, getCurrentUser, updateUser, updateAvatar, login,
