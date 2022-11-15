@@ -23,14 +23,19 @@
 + Центральная обработка ошибок
 + Валидация входящих данных
   
-### Подготовка и запуск проекта
+## Установка и запуск проекта:
+Клонировать репозиторий:
 
-`npm i` — установка зависимостей
+    git clone git@github.com:Andryuha-Nikolaev/express-mesto-gha.git
 
-`mongod` — запускает mongodDB
+Установить зависимости:
 
-`npm run start` — запускает сервер
+    npm install
 
-`npm run dev` — запускает сервер с hot-reload
+Запустить сервер:
 
-`npm run lint` — запускает линтер
+    npm run start
+
+Запустить сервер с hot-reload:
+
+    npm run dev
