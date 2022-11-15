@@ -26,7 +26,7 @@
 ## Установка и запуск проекта:
 Клонировать репозиторий:
 
-    git clone git@github.com:Andryuha-Nikolaev/express-mesto-gha.git
+    git clone https://github.com/Andryuha-Nikolaev/express-mesto-gha.git
 
 Установить зависимости:
 
