@@ -1,28 +1,36 @@
-[![Tests](https://github.com/yandex-praktikum/express-mesto-gha/actions/workflows/tests-13-sprint.yml/badge.svg)](https://github.com/yandex-praktikum/express-mesto-gha/actions/workflows/tests-13-sprint.yml) [![Tests](https://github.com/yandex-praktikum/express-mesto-gha/actions/workflows/tests-14-sprint.yml/badge.svg)](https://github.com/yandex-praktikum/express-mesto-gha/actions/workflows/tests-14-sprint.yml)
-# Проект Mesto фронтенд + бэкенд
+# Бэкенд проекта Mesto
 
+### Технологии:
++ NodeJS
++ Express
++ MongoDB
++ Mongoose
 
+### Функционал: 
 
-## Настройка бейджей статуса тестов
-Перед началом работы над проектом рекомендуется исправить бейджи, отражающие статус прохождения тестов.
-Для этого замените разметку бейджей на следующий фрагмент, подставив вместо `${имя_пользователя}` и `${имя_репозитория}` соответствующие значения.
-
-```
-[![Tests for sprint 13](https://github.com/${Andryuha-Nikolaev}/${express-mesto-gha}/actions/workflows/tests-13-sprint.yml/badge.svg)](https://github.com/${Andryuha-Nikolaev}/${express-mesto-gha}/actions/workflows/tests-13-sprint.yml) 
-
-[![Tests for sprint 14](https://github.com/${Andryuha-Nikolaev}/${express-mesto-gha}/actions/workflows/tests-14-sprint.yml/badge.svg)](https://github.com/${Andryuha-Nikolaev}/${express-mesto-gha}/actions/workflows/tests-14-sprint.yml)
-```
-
-
-## Директории
-
-`/routes` — папка с файлами роутера  
-`/controllers` — папка с файлами контроллеров пользователя и карточки   
-`/models` — папка с файлами описания схем пользователя и карточки  
++ Регистрация
++ Авторизация
++ Обновление данных пользователя
++ Обновление аватара
++ Получение списка пользователя
++ Получение пользователя по ID 
++ Получение информации о текущем пользователе
++ Получение списка карточек
++ Создание карточки
++ Удаление карточки
++ Постановка лайка
++ Снятие лайка
++ Центральная обработка ошибок
++ Валидация входящих данных
   
-Остальные директории вспомогательные, создаются при необходимости разработчиком
+### Подготовка и запуск проекта
 
-## Запуск проекта
+`npm i` — установка зависимостей
 
-`npm run start` — запускает сервер   
+`mongod` — запускает mongodDB
+
+`npm run start` — запускает сервер
+
 `npm run dev` — запускает сервер с hot-reload
+
+`npm run lint` — запускает линтер
